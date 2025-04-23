@@ -55,12 +55,12 @@ public class TelaConversor {
 		buttonKelvin.setBounds(260, 100, 200, 25);
 		
 		labelResultado = new JLabel();
-		labelResultado.setText("78,8 FAHREINHEIT ");
+//		labelResultado.setText("78,8 FAHREINHEIT ");
 		labelResultado.setFont(new Font ("Arial", 1, 18));
 		labelResultado.setBounds(175, 150, 200, 40);
 		
 		labelMensagemErro = new JTextArea();
-		labelMensagemErro.setText("Caso o valor fornecido pelo usuário esteja incorreto,\n a mensagem de erro deverá aparecer aqui");
+//		labelMensagemErro.setText("Caso o valor fornecido pelo usuário esteja incorreto,\n a mensagem de erro deverá aparecer aqui");
 		labelMensagemErro.setBounds(75, 200, 350, 80);
 		labelMensagemErro.setForeground(Color.red);
 		labelMensagemErro.setBackground(null);
@@ -77,6 +77,8 @@ public class TelaConversor {
 				
 				double temperaturaFahreinheit = temperatura.converterParaFahreinheit();
 				labelResultado.setText(Double.toString(temperaturaFahreinheit) + " FAHREINHEIT");
+				labelResultado.setBounds(165, 150, 200, 40);
+				textCelsius.requestFocus();
 				
 			}
 		});
@@ -89,8 +91,11 @@ public class TelaConversor {
 				Temperatura temperatura = new Temperatura();
 				temperatura.setCelsius(Double.parseDouble(inputCelsius)); //convertendo para double
 				
+				
 				double temperaturaKelvin = temperatura.converterParaKelvin();
 				labelResultado.setText(Double.toString(temperaturaKelvin) + " KELVIN");
+				labelResultado.setBounds(180, 150, 200, 40);
+				textCelsius.requestFocus();
 				
 			}
 		});
