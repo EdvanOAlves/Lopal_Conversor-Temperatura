@@ -34,7 +34,7 @@ public class TelaConversor {
 		// Iniciando
 		JFrame tela = new JFrame();
 		tela.setTitle(tituloDaTela);
-		tela.setSize(500, 420);
+		tela.setSize(500, 300);
 		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		tela.setResizable(false);
 		tela.setLayout(null);
@@ -65,25 +65,33 @@ public class TelaConversor {
 		labelMensagemErro.setForeground(Color.red);
 		labelMensagemErro.setBackground(null);
 
-		Container container = tela.getContentPane(); // Pegando o local para adicionar o conteudo ao JFrame
+		// Pegando o local para adicionar o conteudo ao JFrame
+		Container container = tela.getContentPane();
 
 		buttonFahreinheit.addActionListener(new ActionListener() { // Funcionamento do botão limpar
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String inputCelsius = textCelsius.getText(); 	//Coletando input e guardando na variável
+				// Coletando input
+				String inputCelsius = textCelsius.getText();
 
-				inputCelsius = TratamentoDeInput.tratarInput(inputCelsius); 	// Tratamento do input
-				String errorMessage = TratamentoDeInput.verificarErros(inputCelsius);	//Enviando input para verificar por erros e receber uma mensagem (Se necessário)
-																				// 
-				if (errorMessage.equals("none")) { 	//Se estiver tudo certo, procedimento normal
+				// Tratamento de input e diagnóstico de erros
+				inputCelsius = TratamentoDeInput.tratarInput(inputCelsius);
+				String errorMessage = TratamentoDeInput.verificarErros(inputCelsius);
+				//
+				if (errorMessage.equals("none")) { // Se estiver tudo certo, procedimento normal
+
+					// instanciando objeto com a temperatura
 					Temperatura temperatura = new Temperatura();
-					temperatura.setCelsius(Double.parseDouble(inputCelsius)); //convertendo para double
+					temperatura.setCelsius(Double.parseDouble(inputCelsius));
 
+					// conversão e formatação do resultado
 					double temperaturaFahreinheit = temperatura.converterParaFahreinheit();
-					labelResultado.setText(Double.toString(temperaturaFahreinheit) + " FAHREINHEIT");
+					String resultado = String.format("%.2f", temperaturaFahreinheit);
+					labelResultado.setText(resultado + " FAHREINHEIT");
+					labelMensagemErro.setText("");
 					textCelsius.requestFocus();
-				} else {	//Em caso de erro, a mensagem de erro é exibida
+				} else { // Em caso de erro, a mensagem de erro é exibida
 					labelResultado.setText("");
 					labelMensagemErro.setText(errorMessage);
 				}
@@ -91,26 +99,37 @@ public class TelaConversor {
 			}
 		});
 
-		buttonKelvin.addActionListener(new ActionListener() { 	//Funcionamento do botão limpar
+		buttonKelvin.addActionListener(new ActionListener() { // Funcionamento do botão limpar
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String inputCelsius = textCelsius.getText(); 	//Coletando input e guardando na variável
+				// Coletando input
+				String inputCelsius = textCelsius.getText();
 
-				inputCelsius = TratamentoDeInput.tratarInput(inputCelsius); 	//Tratamento do input
-				String errorMessage = TratamentoDeInput.verificarErros(inputCelsius);	//Enviando input para verificar por erros e receber uma mensagem (Se necessário)
+				// Tratamento de input e diagnóstico de erros
+				inputCelsius = TratamentoDeInput.tratarInput(inputCelsius);
+				String errorMessage = TratamentoDeInput.verificarErros(inputCelsius);
 
-				if (errorMessage.equals("none")) { 	//Se estiver tudo certo, procedimento normal
-				Temperatura temperatura = new Temperatura();
-				temperatura.setCelsius(Double.parseDouble(inputCelsius)); // convertendo para double
-
-				double temperaturaKelvin = temperatura.converterParaKelvin();
-				labelResultado.setText(Double.toString(temperaturaKelvin) + " KELVIN");
-				textCelsius.requestFocus();
+				if (errorMessage.equals("none")) { // Se estiver tudo certo, procedimento normal
+					
+					// instanciando objeto com a temperatura
+					Temperatura temperatura = new Temperatura();
+					temperatura.setCelsius(Double.parseDouble(inputCelsius)); 
+					
+					// conversão e formatação do resultado
+					double temperaturaKelvin = temperatura.converterParaKelvin();
+					String resultado = String.format("%.2f", temperaturaKelvin);
+					labelResultado.setText(resultado + " KELVIN");
+					textCelsius.requestFocus();
+					labelMensagemErro.setText("");
+				} else { // Em caso de erro, a mensagem de erro é exibida
+					labelResultado.setText("");
+					labelMensagemErro.setText(errorMessage);
 				}
 			}
 		});
 
+		//adicionando elementos na tela
 		container.add(labelCelsius);
 		container.add(textCelsius);
 		container.add(buttonFahreinheit);
@@ -118,9 +137,9 @@ public class TelaConversor {
 		container.add(labelResultado);
 		container.add(labelMensagemErro);
 
+		//ligando a visualização
 		tela.setVisible(true);
-		
-		
+
 	}
 
 }

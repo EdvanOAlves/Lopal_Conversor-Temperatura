@@ -2,8 +2,8 @@ package br.dev.edvan.temperatura.model;
 
 public class TratamentoDeInput {
 	/*
-	 * Olá, não sei se essa anotação vai ficar aqui, só preciso prestar um
-	 * esclarecimento: Eu sei que essa solução foge do diagrama de classe, eu só
+	 * Olá, não sei se essa anotação vai ficar aqui, só preciso esclarecer:
+	 * Eu sei que essa solução foge do diagrama de classe, eu só
 	 * notei que não foram abordados os métodos try catch em aula (que eu já sabia
 	 * usar), então decidi pegar pra fazer o tratamento dos inputs e capturar o
 	 * máximo de erros manualmente em uma classe só por prática mesmo, obrigado pela
