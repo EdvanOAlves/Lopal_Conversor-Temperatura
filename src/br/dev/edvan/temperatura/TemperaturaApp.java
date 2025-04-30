@@ -11,3 +11,11 @@ public class TemperaturaApp {
 	
 
 }
+//TODO:
+//
+//Centralizar elementos na janela
+//Ajustar tamanho da janela, deixar mais agradável
+//Ajustar tamanho das fontes
+//tratar o double do resultado para apenas dois digitos
+
+
