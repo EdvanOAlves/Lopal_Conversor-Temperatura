@@ -41,15 +41,15 @@ public class TelaConversor {
 		// Configurando botões, campos de entrada e labels
 		labelCelsius = new JLabel();
 		labelCelsius.setText("Temperatura em graus celsius:");
-		labelCelsius.setBounds(40, 30, 240, 25);
+		labelCelsius.setBounds(30, 30, 240, 25);
 		labelCelsius.setFont(new Font("Arial", 0, 14));
 
 		textCelsius = new JTextField();
-		textCelsius.setBounds(40, 60, 420, 30);
+		textCelsius.setBounds(30, 60, 430, 30);
 
 		buttonFahreinheit = new JButton();
 		buttonFahreinheit.setText("FAHREINHEIT");
-		buttonFahreinheit.setBounds(40, 100, 200, 25);
+		buttonFahreinheit.setBounds(30, 100, 200, 25);
 
 		buttonKelvin = new JButton();
 		buttonKelvin.setText("KELVIN");
@@ -60,14 +60,15 @@ public class TelaConversor {
 		labelResultado.setBounds(175, 120, 200, 40);
 
 		labelMensagemErro = new JLabel();
-		labelMensagemErro.setBounds(110, 150, 350, 80);
+		labelMensagemErro.setFont(new Font("Arial",  1, 13));
+		labelMensagemErro.setBounds(20, 150, 500, 50);
 		labelMensagemErro.setForeground(Color.red);
 		labelMensagemErro.setBackground(null);
 
 		// Pegando o local para adicionar o conteudo ao JFrame
 		Container container = tela.getContentPane();
 
-		buttonFahreinheit.addActionListener(new ActionListener() { // Funcionamento do botão limpar
+		buttonFahreinheit.addActionListener(new ActionListener() { //Funcionamento do conversor para Kelvin
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +100,7 @@ public class TelaConversor {
 			}
 		});
 
-		buttonKelvin.addActionListener(new ActionListener() { // Funcionamento do botão limpar
+		buttonKelvin.addActionListener(new ActionListener() { // Funcionamento do conversor para Kelvin
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
