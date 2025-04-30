@@ -25,16 +25,17 @@ public class TratamentoDeInput {
 
 	public static String verificarErros(String inputCelsius) { // Verificação de erros
 		String mensagemDeErro = "none"; // Por padrão, sem nenhum erro até que se prove o contrário
+		String formatacao = "<html><body style='width: 200px; text-align:center'>"; //Definindo formatacao da caixa de texto para mensagem de erro
 
 		// Caso 1: Campo vazio
 		if (inputCelsius.isEmpty()) { 
-			mensagemDeErro = "Por favor, preencha o campo com uma temperatura em graus Celcius";
+			mensagemDeErro = formatacao + "Por favor, preencha o campo com uma temperatura em graus Celcius";
 			return mensagemDeErro;
 		}
 		
 		//Caso 2: Input de não-dígito
 		if (!inputCelsius.matches("-?[0-9.]+$")){ //verificação de números, símbolo de negativo ao inicio e "." ao longo do número
-			mensagemDeErro = "Por favor, apenas caracteres válidos (0-9, . e -)";
+			mensagemDeErro = formatacao + "Por favor, apenas caracteres válidos (0-9, . e -)";
 			return mensagemDeErro;
 			
 		}
@@ -56,7 +57,7 @@ public class TratamentoDeInput {
 		
 		// Caso 4: Valor abaixo do possível
 		else if (Double.parseDouble(inputCelsius) <= -273.16) { 
-			mensagemDeErro = "Por favor, não insira temperaturas abaixo do zero absoluto (-273.15°C)";
+			mensagemDeErro = formatacao + "Por favor, não insira temperaturas abaixo do zero absoluto (-273.15°C)";
 			return mensagemDeErro;
 		}
 		

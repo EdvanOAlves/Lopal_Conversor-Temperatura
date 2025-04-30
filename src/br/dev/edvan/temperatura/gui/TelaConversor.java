@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import br.dev.edvan.temperatura.model.TratamentoDeInput;
@@ -28,7 +27,7 @@ public class TelaConversor {
 
 	// Outputs
 	private JLabel labelResultado;
-	private JTextArea labelMensagemErro;
+	private JLabel labelMensagemErro;
 
 	public void criarTelaConversor(String tituloDaTela) {// criando a tela
 		// Iniciando
@@ -60,8 +59,8 @@ public class TelaConversor {
 		labelResultado.setFont(new Font("Arial", 1, 18));
 		labelResultado.setBounds(175, 120, 200, 40);
 
-		labelMensagemErro = new JTextArea();
-		labelMensagemErro.setBounds(75, 200, 350, 80);
+		labelMensagemErro = new JLabel();
+		labelMensagemErro.setBounds(110, 150, 350, 80);
 		labelMensagemErro.setForeground(Color.red);
 		labelMensagemErro.setBackground(null);
 
@@ -89,6 +88,7 @@ public class TelaConversor {
 					double temperaturaFahreinheit = temperatura.converterParaFahreinheit();
 					String resultado = String.format("%.2f", temperaturaFahreinheit);
 					labelResultado.setText(resultado + " FAHREINHEIT");
+					labelResultado.setBounds(155, 120, 200, 40);
 					labelMensagemErro.setText("");
 					textCelsius.requestFocus();
 				} else { // Em caso de erro, a mensagem de erro é exibida
@@ -120,6 +120,7 @@ public class TelaConversor {
 					double temperaturaKelvin = temperatura.converterParaKelvin();
 					String resultado = String.format("%.2f", temperaturaKelvin);
 					labelResultado.setText(resultado + " KELVIN");
+					labelResultado.setBounds(190, 120, 200, 40);
 					textCelsius.requestFocus();
 					labelMensagemErro.setText("");
 				} else { // Em caso de erro, a mensagem de erro é exibida
